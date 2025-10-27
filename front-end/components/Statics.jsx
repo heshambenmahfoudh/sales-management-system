@@ -10,8 +10,13 @@ export default async function Statics() {
  const salesData = await fetchingData('sales')
  
  let totalEarning = 0
+ const seenOrder = new Set()
  salesData?.forEach(item => {
- return totalEarning += item?.pay
+  if(!seenOrder?.has(item?.order)){
+      totalEarning += item?.pay
+      seenOrder?.add(item?.order)
+  }
+ return totalEarning 
 });
 
 return (
@@ -30,13 +35,13 @@ return (
             </span>
             <h3 className="font-bold text-[14px]">All Earning </h3>
             <div className='flex justify-between items-center'>
-                <h1 className="font-bold text-2xl mb-2 ">${totalEarning} </h1>
+                <h1 className="font-bold text-2xl mb-2 ">${totalEarning || 0} </h1>
                 <h3 className='font-semibold text-1xl mb-2 flex flex-col  items-center'>
                 <span className='ml-1 text-11'>
                   Month {new Date().getMonth()}
                 </span>
                 <span className='ml-1 text-green-700 text-18'>
-                ${0 }
+                ${0}
                 </span>
                 </h3>
             </div>
@@ -57,9 +62,7 @@ return (
             <div className='flex justify-between items-center'>
                 <h1 className="font-bold text-2xl mb-2 ">{productsData?.length | 0} </h1>
             </div>
-           
           </div>
-          
            <div
             className="bg-center  cursor-pointer  border-1 border-gray-200 shadow
           hover:border-blue-400 transition-all duration-300  bg-white rounded-2xl p-3 h-32  mb-1 sm:mb-0 item"

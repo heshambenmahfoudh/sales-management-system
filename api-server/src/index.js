@@ -135,8 +135,8 @@ app.use('/api/v1', settingsRouter)
 app.use(globalErr)
 
 // RUN SERVER IN EXPRESS
-const server = app.listen(process.env.PORT, () => {
-  console.log(`Starting server running on port (${process.env.PORT}) :) `)
+const server = app.listen(process.env.PORT || 9999, () => {
+  console.log(`Starting server running on port (${process.env.PORT ||9999}) :) `)
 })
 
 // HANDLE ERR OUT EXPRESS
