@@ -112,7 +112,7 @@ export default function DataTable({
                                 item[columnName]?.slice(0,10)
                               ) 
                               : columnName?.includes("imageUrl") ? (
-                                <div className="flex   justify-center items-center min-w-10 min-h-10
+                                <div className="flex   justify-center items-center min-w-10 min-h-7
                                  ">
                                     <img
                                       src={item[columnName] ? item[columnName]:'imageUrl'}
