@@ -1,7 +1,7 @@
 'use server'
 import axios from 'axios'
 import { cookies } from 'next/headers'
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL
+const baseURL = process.env.BASE_URL
 async function getTokins() {
   try {
     const cookieStore = await cookies()
