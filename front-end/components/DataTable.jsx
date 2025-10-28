@@ -22,7 +22,7 @@ export default function DataTable({
     linkViewInvoice ,
     isPage
   }) {
-   const rowsPerPage=5
+   const rowsPerPage = 5
    const [currentPage, setCurrentPage] = useState(1)
    const totalPages=Math.ceil(data.length/rowsPerPage)
    const startIndex= (currentPage-1)* rowsPerPage
@@ -103,21 +103,22 @@ export default function DataTable({
                                 columnName
                                   .split(".")
                                   .reduce((obj, key) => obj?.[key], item)
-                              ) : columnName === "createdAt" ||
-                                columnName === "updatedAt" || 
-                                columnName === "givingDate" || 
-                                columnName === "dueDate" || 
+                              ) : columnName === "createdAt"  ||
+                                columnName === "updatedAt"    || 
+                                columnName === "givingDate"   || 
+                                columnName === "dueDate"      || 
                                 columnName === "dateMaturity" || 
                                 columnName === "date"? (
                                 item[columnName]?.slice(0,10)
                               ) 
                               : columnName?.includes("imageUrl") ? (
-                                <div className="flex   justify-center items-center min-w-10 min-h-7
+                                <div className="flex   justify-center items-center
+                                w-[110px] h-[40px] m-auto
                                  ">
-                                    <img
+                                    <img 
                                       src={item[columnName] ? item[columnName]:'imageUrl'}
                                       alt="imageUrl" 
-                                      className="w-10 h-10 object-cover rounded-full"
+                                      className="object-cover m-auto"
                                     />
                                 </div>
                          ) : (
